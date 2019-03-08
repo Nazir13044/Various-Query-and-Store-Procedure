@@ -1,0 +1,9 @@
+from k in _entity.AssignKPIDetails 
+                         join h in _entity.AssignedKpiLogs on k.AssignKPIId equals h.AssignKpiId
+                         where k.ActualDate != null && ((DateTime)(k.ActualDate)).Month == h.MonthNumber && k.AssignKPIId==v.kpiId
+                          select new KPIModels
+                    {
+                       kpiId = k.AssignKPIId,                      
+                        Actual = k.Actual,
+                        Target = h.CurrentTarget
+                    }
